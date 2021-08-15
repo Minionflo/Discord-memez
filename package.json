@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Minionflo/memez-discord.git"
+    "url": "git+https://github.com/Minionflo/Discord-memez.git"
   },
   "author": "Minionflo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Minionflo/memez-discord/issues"
+    "url": "https://github.com/Minionflo/Discord-memez/issues"
   },
-  "homepage": "https://github.com/Minionflo/memez-discord#readme",
+  "homepage": "https://github.com/Minionflo/Discord-memez#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
     "scrap-reddit": "^1.0.0"
