@@ -1,0 +1,24 @@
+{
+  "name": "Discord-memez",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js debug",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Minionflo/memez-discord.git"
+  },
+  "author": "Minionflo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Minionflo/memez-discord/issues"
+  },
+  "homepage": "https://github.com/Minionflo/memez-discord#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "scrap-reddit": "^1.0.0"
+  }
+}
