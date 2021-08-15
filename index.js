@@ -2,15 +2,17 @@ const fs            = require('fs')
 const Discord       = require('discord.js')
 const reddit        = require('scrap-reddit')
 
-const config = JSON.parse(fs.readFileSync('config.json', 'utf8'))
 var client = new Discord.Client()
+var config_token = process.env.TOKEN
+var config_prefix = process.env.PREFIX
+var config_status = process.env.STATUS
+var config_statustype = process.env.STATUSTYPE
 if(fs.existsSync("seen.txt") == false) {fs.writeFileSync("seen.txt", "")}
-if(fs.existsSync("config.json") == false) {fs.writeFileSync("config.json", '{\n    "dc_token": "TOKEN",\n    "dc_prefix": "pls-",\n    "dc_status": "Reddit",\n    "dc_statustype": "WATCHING"\n}')}
 var seen = []
 var auto = null
 
 client.on('ready', () => {
-    client.user.setActivity(config.dc_status, {type: config.dc_statustype})
+    client.user.setActivity(config_status, {type: config_statustype})
     console.log(`Online`)
 })
 
@@ -76,11 +78,11 @@ client.on('message', (msg) => {
 
         if(msg.channel != client.channels.cache.get("853735822410645504")) {return}
 
-        if (author.id != client.user.id && cont.startsWith(config.dc_prefix)) {
+        if (author.id != client.user.id && cont.startsWith(config_prefix)) {
 
             
             // 
-            var invoke = cont.split(' ')[0].substr(config.dc_prefix.length),
+            var invoke = cont.split(' ')[0].substr(config_prefix.length),
                 args   = cont.split(' ').slice(1)
             
             
@@ -91,4 +93,4 @@ client.on('message', (msg) => {
 
 })
 
-client.login(config.dc_token)
+client.login(config_token)
