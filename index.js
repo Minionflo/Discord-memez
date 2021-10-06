@@ -33,16 +33,16 @@ async function cmd_meme(msg, args) {
     var post = await reddit.randomPost("memes")
     if(seen.includes(post.data.url) == false) {
         if(post.data.url.slice(-3) == "jpg") {
-            client.channels.cache.get("853735822410645504").send(post.data.url).then(meme => meme.crosspost())
+            client.channels.cache.get("853735822410645504").send(post.data.url)
             console.log("Memed!! JPG")
         } else if(post.data.url.slice(-3) == "png") {
-            client.channels.cache.get("853735822410645504").send(post.data.url).then(meme => meme.crosspost())
+            client.channels.cache.get("853735822410645504").send(post.data.url)
             console.log("Memed!! PNG")
         } else if(post.data.url.slice(-3) == "gif") {
-            client.channels.cache.get("853735822410645504").send(post.data.url).then(meme => meme.crosspost())
+            client.channels.cache.get("853735822410645504").send(post.data.url)
             console.log("Memed!! GIF")
         } else {
-            client.channels.cache.get("853735822410645504").send("No meme found").then(meme => meme.crosspost())
+            client.channels.cache.get("853735822410645504").send("No meme found")
             console.log("Not Memed!! :(")
         }
     } else {
