@@ -7,6 +7,7 @@ var config_token = process.env.TOKEN
 var config_prefix = process.env.PREFIX
 var config_status = process.env.STATUS
 var config_statustype = process.env.STATUSTYPE
+var config_channel = process.env.CHANNEL
 if(fs.existsSync("seen.txt") == false) {fs.writeFileSync("seen.txt", "")}
 var seen = []
 var auto = null
@@ -33,16 +34,16 @@ async function cmd_meme(msg, args) {
     var post = await reddit.randomPost("memes")
     if(seen.includes(post.data.url) == false) {
         if(post.data.url.slice(-3) == "jpg") {
-            client.channels.cache.get("853735822410645504").send(post.data.url)
+            client.channels.cache.get(config_channel).send(post.data.url)
             console.log("Memed!! JPG")
         } else if(post.data.url.slice(-3) == "png") {
-            client.channels.cache.get("853735822410645504").send(post.data.url)
+            client.channels.cache.get(config_channel).send(post.data.url)
             console.log("Memed!! PNG")
         } else if(post.data.url.slice(-3) == "gif") {
-            client.channels.cache.get("853735822410645504").send(post.data.url)
+            client.channels.cache.get(config_channel).send(post.data.url)
             console.log("Memed!! GIF")
         } else {
-            client.channels.cache.get("853735822410645504").send("No meme found")
+            client.channels.cache.get(config_channel).send("No meme found")
             console.log("Not Memed!! :(")
         }
     } else {
@@ -58,20 +59,20 @@ async function cmd_start(msg, args) {
         var interval_args = args[0]
         var interval = interval_args*1000
         console.log(interval)
-        client.channels.cache.get("853735822410645504").send("Sending meme every " + interval_args + " seconds :)")
+        client.channels.cache.get(config_channel).send("Sending meme every " + interval_args + " seconds :)")
         auto = setInterval(cmd_meme, interval);
     } else {
-        client.channels.cache.get("853735822410645504").send("pls-start (interval in S)")
+        client.channels.cache.get(config_channel).send("pls-start (interval in S)")
     }
 }
 async function cmd_stop(msg, args) {
     clearInterval(auto)
-    client.channels.cache.get("853735822410645504").send("Stoped sending memez :(")
+    client.channels.cache.get(config_channel).send("Stoped sending memez :(")
 }
 
 async function cmd_clear(msg, args) {
     fs.writeFileSync("seen.txt", "")
-    client.channels.cache.get("853735822410645504").send("Cleared seen")
+    client.channels.cache.get(config_channel).send("Cleared seen")
 }
 
 
@@ -82,7 +83,7 @@ client.on('message', (msg) => {
         guild  = msg.guild,
         author = msg.author
 
-        if(msg.channel != client.channels.cache.get("853735822410645504")) {return}
+        if(msg.channel != client.channels.cache.get(config_channel)) {return}
 
         if (author.id != client.user.id && cont.startsWith(config_prefix)) {
 
