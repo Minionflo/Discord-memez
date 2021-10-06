@@ -42,6 +42,7 @@ async function cmd_meme(msg, args) {
             client.channels.cache.get("853735822410645504").send(post.data.url).then(meme => meme.crosspost())
             console.log("Memed!! GIF")
         } else {
+            client.channels.cache.get("853735822410645504").send("No meme found").then(meme => meme.crosspost())
             console.log("Not Memed!! :(")
         }
     } else {
