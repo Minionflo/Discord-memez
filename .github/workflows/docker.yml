@@ -5,12 +5,12 @@ on:
 
 jobs:
   build_push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.15.5
+          node-version: 16.13.0
       - run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD}}
       - run: docker build -t minionflo/discord:memez .
       - run: docker push minionflo/discord:memez
