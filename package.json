@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Minionflo/Discord-memez#readme",
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "discord.js": "^14.0.0",
     "scrap-reddit": "^1.0.0"
   }
 }
